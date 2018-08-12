@@ -61,5 +61,19 @@ namespace News.Api.Controllers
         public async Task<IActionResult> GetSingle([FromRoute] int id)
             => (await _newsService.GetSingleById(id))
                     .Match(Ok, Error);
+
+        /// <summary>
+        /// Deletes an existing news item by given id.
+        /// </summary>
+        /// <param name="id">The ID of the news.</param>
+        /// <returns>Success/Error message.</returns>
+        /// <response code="200">News deleted.</response>
+        /// <response code="404">No such news exists.</response>
+        [HttpDelete(WithId)]
+        [ProducesResponseType(typeof(Success), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> Delete([FromRoute] int id)
+            => (await _newsService.DeleteById(id))
+                    .Match(Success, Error);
     }
 }
