@@ -4,6 +4,15 @@
         <name>News.Api</name>
     </assembly>
     <members>
+        <member name="M:News.Api.Controllers.NewsController.Post(News.Core.Models.NewsModel)">
+            <summary>
+            Creates a news item by given title, content and publish date.
+            </summary>
+            <param name="model">The news model.</param>
+            <returns>A news model.</returns>
+            <response code="201">A news was created.</response>
+            <response code="400">Already existing news.</response>
+        </member>
         <member name="M:News.Api.Controllers.OptionController.Get(Optional.Option{System.String},Optional.Option{System.Int32},Optional.Option{System.Boolean})">
             <summary>
             Demonstrates the Option model binding with query string parameters. Cannot be tested from the Swagger UI.
