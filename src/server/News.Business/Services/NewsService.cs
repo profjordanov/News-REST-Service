@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
 using News.Core;
 using News.Core.Models;
@@ -38,7 +40,21 @@ namespace News.Business.Services
 
             return Map<NewsServiceModel>(news).Some<NewsServiceModel, Error>();
         }
-        
+
+        public async Task<IEnumerable<NewsServiceModel>> GetAll()
+            => await _applicationDbContext
+                .News
+                .ProjectTo<NewsServiceModel>()
+                .ToListAsync();
+
+        public async Task<NewsServiceModel> GetSingleById(int id)
+            => await _applicationDbContext
+                .News
+                .Where(news => news.Id == id)
+                .ProjectTo<NewsServiceModel>()
+                .FirstOrDefaultAsync();
+
+
         private async Task<bool> ExistsById(int id)
             => await _applicationDbContext
                 .News

@@ -36,5 +36,7 @@ namespace News.Api.Controllers
         public async Task<IActionResult> Post([FromBody] NewsModel model)
             => (await _newsService.Create(model))
                     .Match(news => CreatedAtAction(nameof(Post), news), Error);
+
+
     }
 }
