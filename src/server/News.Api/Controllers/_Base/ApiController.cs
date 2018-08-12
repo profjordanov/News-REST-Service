@@ -8,5 +8,8 @@ namespace News.Api.Controllers._Base
     {
         protected IActionResult Error(Error error) =>
             new BadRequestObjectResult(error);
+
+        protected IActionResult Success(Success success) =>
+            new OkObjectResult(success);
     }
 }

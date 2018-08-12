@@ -69,6 +69,20 @@ namespace News.Business.Services
                 () => Option.None<NewsServiceModel, Error>(new Error($"There are no news with ID:{id}.")));
         }
 
+        public async Task<Option<Success, Error>> DeleteById(int id)
+        {
+            if (await ExistsById(id))
+            {
+                var news = await _applicationDbContext.News.FindAsync(id);
+                _applicationDbContext.Remove(news);
+                await _applicationDbContext.SaveChangesAsync();
+
+                return Option.Some<Success, Error>(new Success($"News with ID:{id} was successfully deleted!"));
+            }
+
+            return Option.None<Success, Error>(new Error($"There are no news with ID:{id}."));
+        }
+
         private async Task<bool> ExistsById(int id)
             => await _applicationDbContext
                 .News

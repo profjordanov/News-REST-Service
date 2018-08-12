@@ -12,5 +12,7 @@ namespace News.Core.Services
         Task<Option<IEnumerable<NewsServiceModel>, Error>> GetAll();
 
         Task<Option<NewsServiceModel, Error>> GetSingleById(int id);
+
+        Task<Option<Success, Error>> DeleteById(int id);
     }
 }
