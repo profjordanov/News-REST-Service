@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
+using News.Api.Controllers._Base;
 using Optional;
 
 namespace News.Api.Controllers

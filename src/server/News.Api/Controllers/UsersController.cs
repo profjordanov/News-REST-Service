@@ -4,6 +4,7 @@ using News.Core;
 using News.Core.Models;
 using News.Core.Services;
 using Microsoft.AspNetCore.Mvc;
+using News.Api.Controllers._Base;
 
 namespace News.Api.Controllers
 {
