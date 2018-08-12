@@ -46,6 +46,7 @@ namespace News.Business.Services
             var result = (await _applicationDbContext
                     .News
                     .ProjectTo<NewsServiceModel>()
+                    .OrderByDescending(news => news.PublishDate)
                     .ToListAsync())
                 .NoneWhen(res => !res.Any());
 

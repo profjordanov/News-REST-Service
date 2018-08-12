@@ -37,6 +37,17 @@ namespace News.Api.Controllers
             => (await _newsService.Create(model))
                     .Match(news => CreatedAtAction(nameof(Post), news), Error);
 
-
+        /// <summary>
+        /// returns all news ordered by publish date (from the latest).
+        /// </summary>
+        /// <returns>A collection of news model.</returns>
+        /// <response code="200">A collection of all news.</response>
+        /// <response code="404">No News available.</response>
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<NewsServiceModel>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> Get()
+            => (await _newsService.GetAll())
+                    .Match(Ok, Error);
     }
 }
