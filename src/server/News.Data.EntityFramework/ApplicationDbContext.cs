@@ -1,7 +1,7 @@
-﻿using News.Data.Entities;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using News.Data.Entities;
 
 namespace News.Data.EntityFramework
 {
@@ -11,5 +11,7 @@ namespace News.Data.EntityFramework
             : base (options)
         {
         }
+
+        public DbSet<Entities.News> News { get; set; }
     }
 }
