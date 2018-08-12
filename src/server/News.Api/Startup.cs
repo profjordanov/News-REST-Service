@@ -39,6 +39,7 @@ namespace News.Api
 
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IJwtFactory, JwtFactory>();
+            services.AddTransient<INewsService, NewsService>();
 
             services.AddMvc(options =>
             {
