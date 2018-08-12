@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using News.Api.Controllers._Base;
 using News.Core;
 using News.Core.Models;
 using News.Core.Services;
+using static News.Api.WebConstants;
 
 namespace News.Api.Controllers
 {
@@ -38,7 +36,7 @@ namespace News.Api.Controllers
                     .Match(news => CreatedAtAction(nameof(Post), news), Error);
 
         /// <summary>
-        /// returns all news ordered by publish date (from the latest).
+        /// Returns all news ordered by publish date (from the latest).
         /// </summary>
         /// <returns>A collection of news model.</returns>
         /// <response code="200">A collection of all news.</response>
@@ -48,6 +46,20 @@ namespace News.Api.Controllers
         [ProducesResponseType(typeof(Error), (int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Get()
             => (await _newsService.GetAll())
+                    .Match(Ok, Error);
+
+        /// <summary>
+        /// Returns single news.
+        /// </summary>
+        /// <param name="id">The ID of the news.</param>
+        /// <returns>A news model.</returns>
+        /// <response code="200">The news exists.</response>
+        /// <response code="404">No such news exists.</response>
+        [HttpGet(WithId)]
+        [ProducesResponseType(typeof(NewsServiceModel), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> GetSingle([FromRoute] int id)
+            => (await _newsService.GetSingleById(id))
                     .Match(Ok, Error);
     }
 }

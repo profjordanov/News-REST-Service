@@ -15,11 +15,20 @@
         </member>
         <member name="M:News.Api.Controllers.NewsController.Get">
             <summary>
-            returns all news ordered by publish date (from the latest).
+            Returns all news ordered by publish date (from the latest).
             </summary>
             <returns>A collection of news model.</returns>
             <response code="200">A collection of all news.</response>
             <response code="404">No News available.</response>
+        </member>
+        <member name="M:News.Api.Controllers.NewsController.GetSingle(System.Int32)">
+            <summary>
+            Returns single news.
+            </summary>
+            <param name="id">The ID of the news.</param>
+            <returns>A news model.</returns>
+            <response code="200">The news exists.</response>
+            <response code="404">No such news exists.</response>
         </member>
         <member name="M:News.Api.Controllers.OptionController.Get(Optional.Option{System.String},Optional.Option{System.Int32},Optional.Option{System.Boolean})">
             <summary>
