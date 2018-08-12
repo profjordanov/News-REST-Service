@@ -83,6 +83,29 @@ namespace News.Business.Services
             return Option.None<Success, Error>(new Error($"There are no news with ID:{id}."));
         }
 
+        public async Task<Option<NewsServiceModel, Error>> Update(int id, NewsModel model)
+        {
+            if (!await ExistsById(id))
+            {
+                return Option.None<NewsServiceModel, Error>(new Error($"There are no news with ID:{id}."));
+            }
+
+            if (await ExistsByTitle(model.Title))
+            {
+                return Option.None<NewsServiceModel, Error>(new Error($"News with title '{model.Title}' already exists!"));
+            }
+
+            var news = await _applicationDbContext.News.FindAsync(id);
+            news.Title = model.Title;
+            news.Content = model.Content;
+            news.PublishDate = model.PublishDate;
+
+            _applicationDbContext.News.Update(news);
+            await _applicationDbContext.SaveChangesAsync();
+
+            return Map<NewsServiceModel>(news).Some<NewsServiceModel, Error>();
+        }
+
         private async Task<bool> ExistsById(int id)
             => await _applicationDbContext
                 .News

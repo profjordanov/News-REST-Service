@@ -62,6 +62,12 @@ namespace News.Api.Controllers
             => (await _newsService.GetSingleById(id))
                     .Match(Ok, Error);
 
+        [HttpPut(WithId)]
+        [ProducesResponseType(typeof(NewsServiceModel), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> Put([FromRoute] int id, [FromBody]NewsModel model)
+            => (await _newsService.Update(id, model))
+                    .Match(Ok, Error);
         /// <summary>
         /// Deletes an existing news item by given id.
         /// </summary>

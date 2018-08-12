@@ -14,5 +14,7 @@ namespace News.Core.Services
         Task<Option<NewsServiceModel, Error>> GetSingleById(int id);
 
         Task<Option<Success, Error>> DeleteById(int id);
+
+        Task<Option<NewsServiceModel, Error>> Update(int id, NewsModel model);
     }
 }

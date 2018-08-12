@@ -9,7 +9,8 @@ namespace News.Core.Mappings
         {
             CreateMap<Data.Entities.News, NewsServiceModel>(MemberList.Destination);
 
-            CreateMap<NewsModel, Data.Entities.News>(MemberList.Destination);
+            CreateMap<NewsModel, Data.Entities.News>(MemberList.Destination)
+                .ForMember(src => src.Id, opts => opts.Ignore());
         }
     }
 }
