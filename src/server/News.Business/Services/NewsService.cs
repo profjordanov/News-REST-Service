@@ -41,19 +41,32 @@ namespace News.Business.Services
             return Map<NewsServiceModel>(news).Some<NewsServiceModel, Error>();
         }
 
-        public async Task<IEnumerable<NewsServiceModel>> GetAll()
-            => await _applicationDbContext
-                .News
-                .ProjectTo<NewsServiceModel>()
-                .ToListAsync();
+        public async Task<Option<IEnumerable<NewsServiceModel>, Error>> GetAll()
+        {
+            var result = (await _applicationDbContext
+                    .News
+                    .ProjectTo<NewsServiceModel>()
+                    .ToListAsync())
+                .NoneWhen(res => !res.Any());
 
-        public async Task<NewsServiceModel> GetSingleById(int id)
-            => await _applicationDbContext
-                .News
-                .Where(news => news.Id == id)
-                .ProjectTo<NewsServiceModel>()
-                .FirstOrDefaultAsync();
+            return result.Match(
+                news => news.Some<IEnumerable<NewsServiceModel>, Error>(),
+                () => Option.None<IEnumerable<NewsServiceModel>, Error>(new Error("There are no news!")));
+        }
 
+        public async Task<Option<NewsServiceModel, Error>> GetSingleById(int id)
+        {
+            var result = (await _applicationDbContext
+                    .News
+                    .Where(news => news.Id == id)
+                    .ProjectTo<NewsServiceModel>()
+                    .FirstOrDefaultAsync())
+                .SomeNotNull();
+
+            return result.Match(
+                news => news.Some<NewsServiceModel, Error>(),
+                () => Option.None<NewsServiceModel, Error>(new Error($"There are no news with ID:{id}.")));
+        }
 
         private async Task<bool> ExistsById(int id)
             => await _applicationDbContext

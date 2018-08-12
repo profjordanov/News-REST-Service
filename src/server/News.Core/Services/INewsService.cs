@@ -9,8 +9,8 @@ namespace News.Core.Services
     {
         Task<Option<NewsServiceModel, Error>> Create(NewsModel model);
 
-        Task<IEnumerable<NewsServiceModel>> GetAll();
+        Task<Option<IEnumerable<NewsServiceModel>, Error>> GetAll();
 
-        Task<NewsServiceModel> GetSingleById(int id);
+        Task<Option<NewsServiceModel, Error>> GetSingleById(int id);
     }
 }
