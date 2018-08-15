@@ -1,0 +1,2 @@
+1) HttpClientExtensions => ApiGetAsync, ApiPostAsync
+2) QueryHelpers .ToQuery
