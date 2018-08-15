@@ -30,6 +30,17 @@
             <response code="200">The news exists.</response>
             <response code="404">No such news exists.</response>
         </member>
+        <member name="M:News.Api.Controllers.NewsController.Put(System.Int32,News.Core.Models.NewsModel)">
+            <summary>
+            Updates an existing news item by given id and title,
+            content and publish date (given in the request body).
+            </summary>
+            <param name="id">The ID of the news.</param>
+            <param name="model">Title,content and publish date.</param>
+            <returns>Model or Error message.</returns>
+            <response code="200">News updated.</response>
+            <response code="404">No such news exists.</response>
+        </member>
         <member name="M:News.Api.Controllers.NewsController.Delete(System.Int32)">
             <summary>
             Deletes an existing news item by given id.

@@ -62,12 +62,22 @@ namespace News.Api.Controllers
             => (await _newsService.GetSingleById(id))
                     .Match(Ok, Error);
 
+        /// <summary>
+        /// Updates an existing news item by given id and title,
+        /// content and publish date (given in the request body).
+        /// </summary>
+        /// <param name="id">The ID of the news.</param>
+        /// <param name="model">Title,content and publish date.</param>
+        /// <returns>Model or Error message.</returns>
+        /// <response code="200">News updated.</response>
+        /// <response code="404">No such news exists.</response>
         [HttpPut(WithId)]
         [ProducesResponseType(typeof(NewsServiceModel), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
         public async Task<IActionResult> Put([FromRoute] int id, [FromBody]NewsModel model)
             => (await _newsService.Update(id, model))
                     .Match(Ok, Error);
+
         /// <summary>
         /// Deletes an existing news item by given id.
         /// </summary>
