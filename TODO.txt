@@ -1,2 +1,54 @@
 1) HttpClientExtensions => ApiGetAsync, ApiPostAsync
+
+ protected async Task<TResponse> GetAsync<TResponse>(string uri, string queryString)
+        {
+            try
+            {
+                var response = await HttpClient.GetAsync(uri + queryString);
+                return await response.Content.ReadAsAsync<TResponse>();
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+                // Do nothing for now as it's WIP
+                throw;
+            }
+        }
+
+        protected async Task<TResponse> GetAsync<TResponse>(string uri, object model)
+        {
+            try
+            {
+                var response = await HttpClient.GetAsync(uri + model.ToQueryString());
+                return await response.Content.ReadAsAsync<TResponse>();
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+                // Do nothing for now as it's WIP
+                throw;
+            }
+        }
+
+        protected async Task<TResponse> PostAsync<TRequest, TResponse>(string uri, TRequest model)
+            where TResponse : IUxModel, new()
+        {
+            try
+            {
+                var response = await HttpClient.PostAsJsonAsync(uri, model);
+                return await response.Content.ReadAsAsync<TResponse>();
+            }
+            catch (Exception e)
+            {
+                Log.Error(e);
+
+                return new TResponse
+                {
+                    Message = "An internal server error has occurred. Please contact your system administrator.",
+                    MessageType = MessageTypes.Error,
+                    HasError = true
+                };
+            }
+        }
+
 2) QueryHelpers .ToQuery
