@@ -23,3 +23,17 @@ REST service based on ASP.NET Core Web API, Entity Framework Core and SQL Server
 └───tests
     └───News.Business.Tests
 
+```
+
+
+- [x] Swagger UI + Fully Documented Controllers <br>
+
+![swagger-ui](https://devadventures.net/wp-content/uploads/2018/06/swagger-ui-new.png)
+
+- [x] Global Model Errors Handler <br>
+
+![model-errors](https://devadventures.net/wp-content/uploads/2018/05/model-errors.png)
+- [x] Global Environment-Dependent Exception Handler <br>
+Development <br>
+![exception-development](https://devadventures.net/wp-content/uploads/2018/06/exception-development.png)<br> 
+Production <br>
