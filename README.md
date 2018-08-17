@@ -22,8 +22,9 @@ REST service based on ASP.NET Core Web API, Entity Framework Core and SQL Server
 │       └───News.Data.EntityFramework
 └───tests
     └───News.Business.Tests
-    
-- [x] Swagger UI + Fully Documented Controllers <br>
+
+
+[x] Swagger UI + Fully Documented Controllers <br>
 
 ![swagger-ui](https://devadventures.net/wp-content/uploads/2018/06/swagger-ui-new.png)
 
