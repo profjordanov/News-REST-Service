@@ -35,6 +35,27 @@ namespace News.Business.Tests.Services
                                && n.PublishDate == testModel.PublishDate);
         }
 
+        [Fact]
+        public async Task PutNewsWithCorrectData_ShouldReturnValidModel()
+        {
+            var testModel = GetTestData().First();
+            testModel.Title = "Updated Title";
+            testModel.Content = "Updated Content";
+            testModel.PublishDate = DateTime.UtcNow;
+
+            // Act
+            var result = await _newsService.Update(testModel.Id, ProjectToNewsModel(testModel));
+        }
+
+        private NewsServiceModel ProjectToNewsServiceModel(Data.Entities.News model)
+            => new NewsServiceModel
+            {
+                Id = model.Id,
+                Title = model.Title,
+                Content = model.Content,
+                PublishDate = model.PublishDate
+            };
+
         private NewsModel ProjectToNewsModel(Data.Entities.News model)
             => new NewsModel
             {
