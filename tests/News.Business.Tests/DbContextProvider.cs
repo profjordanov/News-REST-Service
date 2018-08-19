@@ -1,5 +1,5 @@
-﻿using News.Data.EntityFramework;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using News.Data.EntityFramework;
 
 namespace News.Business.Tests
 {

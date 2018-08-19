@@ -4,4 +4,13 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\server\News.Api\News.Api.csproj" />
+    <ProjectReference Include="..\src\server\News.Data\News.Data.csproj" />
+  </ItemGroup>
+
 </Project>
