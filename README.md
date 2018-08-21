@@ -2,7 +2,13 @@
 
 REST service based on ASP.NET Core Web API, Entity Framework Core and SQL Server that holds news.
 
-## Features
+## Endpoints:
+- [x] GET /api/news – returns all news ordered by publish date. 
+- [x] POST /api/news – creates a news item by given title, content and publish date. 
+- [x] PUT /api/news/{id} – updates an existing news item by given id (given in the request URL) and title, content and publish date. 
+- [x] DELETE /api/news/{id} – deletes an existing news item by given id.
+
+## Features:
 
 - [x] AutoMapper
 - [x] EntityFramework Core with SQL Server and ASP.NET Identity
