@@ -2,6 +2,12 @@
 
 REST service based on ASP.NET Core Web API, Entity Framework Core and SQL Server that holds news.
 
+# Client Side C# #
+
+News.Client was built using Blazor, a client side experimental framework for building native web applications using .NET and C#. That’s right, this app was created with .NET and is running natively in the browser using WebAssembly.
+
+![blazor-ui](https://cdn-images-1.medium.com/max/1280/1*Lyg6rI-Fs0CdzEHjttc02A.jpeg)
+
 ## Endpoints:
 - [x] GET /api/news – returns all news ordered by publish date. 
 - [x] POST /api/news – creates a news item by given title, content and publish date. 
