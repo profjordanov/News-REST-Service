@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using News.Business.Services;
 using News.Core;
+using News.Core.Mappings;
 using News.Core.Models;
 using News.Core.Services;
 using News.Data.EntityFramework;
@@ -19,6 +21,10 @@ namespace News.Business.Tests.Services
         public NewsServiceTests()
         {
             _newsService = GetNewsServiceWithTestData();
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile<NewsMapping>();
+            });
         }
 
         [Fact]
@@ -45,6 +51,19 @@ namespace News.Business.Tests.Services
 
             // Act
             var result = await _newsService.Update(testModel.Id, ProjectToNewsModel(testModel));
+        }
+
+        [Fact]
+        public async Task GetSingleNewsWithCorrectData_ShouldReturnValidModel()
+        {
+            // Arrange
+            var correctId = this.GetTestData().First().Id;
+
+            // Act
+            var result = await _newsService.GetSingleById(correctId);
+
+            // Assert
+            result.Exists(x => x.Content == GetTestData().First().Content);
         }
 
         private NewsServiceModel ProjectToNewsServiceModel(Data.Entities.News model)
