@@ -21,10 +21,20 @@ namespace News.Business.Tests.Services
         public NewsServiceTests()
         {
             _newsService = GetNewsServiceWithTestData();
-            Mapper.Initialize(cfg =>
-            {
-                cfg.AddProfile<NewsMapping>();
-            });
+            AutoMapperInitializer();
+        }
+
+        [Fact]
+        public async Task GetAllNews_ShouldReturnCorrectData()
+        {
+            // Arrange
+            var testData = Mapper.Map<IEnumerable<Data.Entities.News>, IEnumerable<NewsServiceModel>>(GetTestData());
+
+            // Act
+            var returnedModels = await _newsService.GetAll();
+
+            // Assert
+            var result = returnedModels.Contains(testData);
         }
 
         [Fact]
@@ -134,5 +144,11 @@ namespace News.Business.Tests.Services
                     Content = "Content5",
                     PublishDate = DateTime.ParseExact("2016/01/09", "yyyy/MM/dd", CultureInfo.InvariantCulture) }
             };
+
+        private void AutoMapperInitializer() =>
+            Mapper.Initialize(cfg =>
+            {
+                cfg.AddProfile<NewsMapping>();
+            });
     }
 }
