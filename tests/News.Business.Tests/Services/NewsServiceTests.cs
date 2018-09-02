@@ -148,7 +148,7 @@ namespace News.Business.Tests.Services
         private void AutoMapperInitializer() =>
             Mapper.Initialize(cfg =>
             {
-                cfg.AddProfile<NewsMapping>();
+                cfg.AddProfile<NewsMapping>(); // TODO: This hsould be taken from Assembly
             });
     }
 }
