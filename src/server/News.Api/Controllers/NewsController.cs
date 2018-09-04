@@ -71,10 +71,10 @@ namespace News.Api.Controllers
         /// <returns>Model or Error message.</returns>
         /// <response code="200">News updated.</response>
         /// <response code="404">No such news exists.</response>
-        [HttpPut(WithId)]
+        [HttpPut]
         [ProducesResponseType(typeof(NewsServiceModel), (int)HttpStatusCode.OK)]
-        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.BadRequest)]
-        public async Task<IActionResult> Put([FromRoute] int id, [FromBody]NewsModel model)
+        [ProducesResponseType(typeof(Error), (int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> Put([FromQuery] int id, [FromBody]NewsModel model)
             => (await _newsService.Update(id, model))
                     .Match(Ok, Error);
 
@@ -85,10 +85,10 @@ namespace News.Api.Controllers
         /// <returns>Success/Error message.</returns>
         /// <response code="200">News deleted.</response>
         /// <response code="404">No such news exists.</response>
-        [HttpDelete(WithId)]
+        [HttpDelete]
         [ProducesResponseType(typeof(Success), (int)HttpStatusCode.OK)]
         [ProducesResponseType(typeof(Error), (int)HttpStatusCode.NotFound)]
-        public async Task<IActionResult> Delete([FromRoute] int id)
+        public async Task<IActionResult> Delete([FromQuery] int id)
             => (await _newsService.DeleteById(id))
                     .Match(Success, Error);
     }
