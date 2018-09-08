@@ -11,18 +11,7 @@ namespace News.Client
     {
         public static void Main(string[] args)
         {
-
-            var serviceProvider = new BrowserServiceProvider(services =>
-            {
-                services.AddScoped<HttpApiClient>();
-
-                services.AddSingleton<NewsServices>();
-            });
-
-            new BrowserRenderer(serviceProvider).AddComponent<App>("app");
-
             CreateHostBuilder(args).Build().Run();
-
         }
 
         public static IWebAssemblyHostBuilder CreateHostBuilder(string[] args) =>
