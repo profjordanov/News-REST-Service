@@ -56,6 +56,8 @@ namespace News.Api
                 dbContext.Database.EnsureCreated();
             }
 
+            app.UseCors("CorsPolicy");
+
             loggerFactory.AddLogging(Configuration.GetSection("Logging"));
 
             app.UseSwagger("My Web API.");

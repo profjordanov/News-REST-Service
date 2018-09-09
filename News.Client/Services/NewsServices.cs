@@ -21,11 +21,12 @@ namespace News.Client.Services
         public async Task<ApiObjectResponse<NewsViewModel>> CreateNews(NewsBindModel model)
             => await _httpClient.PostAsync<NewsBindModel, NewsViewModel>(NewsUrl, model);
 
-        public async Task<List<NewsViewModel>> GetNews()
-            => await _httpClient.GetJsonAsync<List<NewsViewModel>>(NewsUrl);
+        //public async Task<List<NewsViewModel>> GetNews()
+        //    => await _httpClient.GetJsonAsync<List<NewsViewModel>>(NewsUrl);
 
-        public async Task<ApiObjectResponse<NewsViewModel>> GetSingleNews(int id)
-            => await _httpClient.GetAsync<NewsViewModel>(string.Format(NewsWithIdUrl, id));
+        public async Task<List<NewsViewModel>> GetNews()
+            => await _httpClient.GetAsync<List<NewsViewModel>>(NewsUrl);
+
 
         //TODO: Update and delete
     }

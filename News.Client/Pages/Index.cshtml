@@ -1,5 +1,25 @@
-﻿@page "/"
-@inherits News.Client.Pages.IndexModel
+﻿@using System.Net
+@using System.Net.Http
+@using System.Net.Http.Headers
+@using Microsoft.AspNetCore.Blazor.Browser.Http
+@using News.Client.Models
+@page "/"
+@inject HttpClient Http
+`
+<button onclick=@(async () => await PrintWebApiResponse())>Print Web API Response</button>
+
+@functions {
+    private async Task PrintWebApiResponse()
+    {
+        var http = new HttpClient(new BrowserHttpMessageHandler())
+        {
+            BaseAddress = new Uri("http://localhost:5000/api/")
+        };
+        var res = await http.GetStringAsync("News");
+
+        Console.WriteLine(res);
+    }
+}
 
 <h1>All News</h1>
 <br />

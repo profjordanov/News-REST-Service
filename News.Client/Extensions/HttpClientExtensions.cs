@@ -43,7 +43,7 @@ namespace News.Client.Extensions
             }
         }
 
-        public static async Task<ApiObjectResponse<TResponse>> GetAsync<TResponse>(
+        public static async Task<TResponse> GetAsync<TResponse>(
             this HttpApiClient httpClient, string uri)
             where TResponse : new()
         {
@@ -60,13 +60,8 @@ namespace News.Client.Extensions
                 {
                     error = JsonConvert.DeserializeObject<Error>(await response.Content.ReadAsStringAsync());
                 }
-                return new ApiObjectResponse<TResponse>
-                {
-                    Error = error,
-                    Response = resultResponse,
-                    StatusCode = response.StatusCode
-                };
 
+                return resultResponse;
             }
             catch (Exception e)
             {

@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Blazor.Browser.Http;
 
 namespace News.Client.Data
 {
     public class HttpApiClient : HttpClient
     {
-        public HttpApiClient()
+        private readonly BrowserHttpMessageHandler _browserHttpMessageHandler;
+
+        public HttpApiClient(BrowserHttpMessageHandler browserHttpMessageHandler)
         {
+            _browserHttpMessageHandler = browserHttpMessageHandler;
             BaseAddress = new Uri("http://localhost:5000/api/");
             DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             DefaultRequestHeaders.Add("Access-Control-Allow-Origin", "*");
