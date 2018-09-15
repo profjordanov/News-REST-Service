@@ -15,9 +15,11 @@
         {
             BaseAddress = new Uri("http://localhost:5000/api/")
         };
-        var res = await http.GetStringAsync("News");
+        var res = await http.GetAsync("News");
 
-        Console.WriteLine(res);
+        var response = await res.Content.ReadAsStringAsync();
+
+        Console.WriteLine(response);
     }
 }
 
