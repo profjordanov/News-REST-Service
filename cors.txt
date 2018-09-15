@@ -1,0 +1,13 @@
+chrome web store:
+
+https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi
+
+
+CORS:
+
+*://localhost:*/*
+
+*://localhost:*/*
+
+
+1711
