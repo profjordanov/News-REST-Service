@@ -1,11 +1,11 @@
-﻿@using System.Net
-@using System.Net.Http
-@using System.Net.Http.Headers
+﻿@using System.Net.Http
 @using Microsoft.AspNetCore.Blazor.Browser.Http
 @using News.Client.Models
+@using Newtonsoft.Json
 @page "/"
 @inject HttpClient Http
-`
+
+
 <button onclick=@(async () => await PrintWebApiResponse())>Print Web API Response</button>
 
 @functions {
@@ -18,6 +18,8 @@
         var res = await http.GetAsync("News");
 
         var response = await res.Content.ReadAsStringAsync();
+
+        //var jsonRes = JsonConvert.DeserializeObject<NewsViewModel>(response);
 
         Console.WriteLine(response);
     }

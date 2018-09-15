@@ -1,8 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Blazor.Browser.Http;
 using Microsoft.AspNetCore.Blazor.Components;
 using News.Client.Models;
 using News.Client.Services;
+using Newtonsoft.Json;
 
 namespace News.Client.Pages
 {
@@ -17,7 +21,17 @@ namespace News.Client.Pages
 
         protected override async Task OnInitAsync()
         {
-            News = await NewsServices.GetNews();
+            var http = new HttpClient(new BrowserHttpMessageHandler())
+            {
+                BaseAddress = new Uri("http://localhost:5000/api/")
+            };
+            var res = await http.GetAsync("News");
+
+            var response = await res.Content.ReadAsStringAsync();
+
+            var jsonRes = JsonConvert.DeserializeObject<List<NewsViewModel>>(response);
+
+            News = jsonRes;
         }
     }
 }
