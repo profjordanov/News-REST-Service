@@ -1,16 +1,16 @@
-﻿using AutoFixture.Xunit2;
-using AutoMapper;
-using Microsoft.AspNetCore.Identity;
-using Moq;
-using Shouldly;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AutoFixture.Xunit2;
+using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Moq;
 using News.Business.Services;
 using News.Core.Identity;
 using News.Core.Models;
 using News.Data.Entities;
+using Shouldly;
 using Xunit;
 
 namespace News.Business.Tests.Services
