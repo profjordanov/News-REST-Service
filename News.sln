@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "News.Data", "src\server\New
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "News.Data.EntityFramework", "src\server\News.Data.EntityFramework\News.Data.EntityFramework.csproj", "{231CC143-1586-45A4-9DC8-8E5F3751BE61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "News.Android.App", "src\clients\News.Android.App\News.Android.App.csproj", "{52381C0D-EAAA-42D6-BAE9-66657B9E0A21}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,12 @@ Global
 		{231CC143-1586-45A4-9DC8-8E5F3751BE61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{231CC143-1586-45A4-9DC8-8E5F3751BE61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{231CC143-1586-45A4-9DC8-8E5F3751BE61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52381C0D-EAAA-42D6-BAE9-66657B9E0A21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52381C0D-EAAA-42D6-BAE9-66657B9E0A21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52381C0D-EAAA-42D6-BAE9-66657B9E0A21}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{52381C0D-EAAA-42D6-BAE9-66657B9E0A21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52381C0D-EAAA-42D6-BAE9-66657B9E0A21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52381C0D-EAAA-42D6-BAE9-66657B9E0A21}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +68,7 @@ Global
 		{FA1643E9-AAEC-428A-A2F7-2E4D7D0BECFF} = {E4B2B71A-84EE-408D-B891-AD009A6C2FA5}
 		{6547A8A7-1E6B-45FE-BB5B-B6E84FEDAA7A} = {E4B2B71A-84EE-408D-B891-AD009A6C2FA5}
 		{231CC143-1586-45A4-9DC8-8E5F3751BE61} = {E4B2B71A-84EE-408D-B891-AD009A6C2FA5}
+		{52381C0D-EAAA-42D6-BAE9-66657B9E0A21} = {E4B2B71A-84EE-408D-B891-AD009A6C2FA5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8165DE93-9D97-4D5E-B3E5-4DD7F401A611}
