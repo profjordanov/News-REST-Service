@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">News.Android.App</string>
-    <string name="title_home">Welcome to News Feed</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-</resources>
