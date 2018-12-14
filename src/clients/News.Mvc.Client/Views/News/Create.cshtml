@@ -1,0 +1,36 @@
+﻿@model NewsBindingModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create News</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" class="form-horizontal">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Title" class="form-control" id="" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Content" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <textarea asp-for="Content" class="form-control" id=""></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" class="btn btn-default">Create</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

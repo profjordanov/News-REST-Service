@@ -2,8 +2,8 @@
 {
     public class WebApiUrls
     {
-        private const string BaseUrl = "https://jnewsapi.azurewebsites.net/api/";
+        private const string Base = "https://jnewsapi.azurewebsites.net/api/";
 
-        public static readonly string GetAllNews = $"{BaseUrl}News";
+        public static readonly string BaseUrl = $"{Base}News";
     }
 }
