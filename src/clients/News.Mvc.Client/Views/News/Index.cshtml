@@ -1,0 +1,13 @@
+﻿@model NewsUxModel[]
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>All News:</h2>
+<hr />
+@foreach (var post in Model)
+{
+    <h3>@post.Title</h3>
+}
+
