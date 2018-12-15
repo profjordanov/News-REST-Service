@@ -52,5 +52,51 @@ namespace News.Mvc.Client
                 throw;
             }
         }
+
+        public static string Delete(BaseModel baseModel)
+        {
+            try
+            {
+                var response = HttpClient.DeleteAsync($"{WebApiUrls.BaseUrl}/?id={baseModel.Id}")
+                    .GetAwaiter()
+                    .GetResult();
+
+                var result = response.Content
+                    .ReadAsStringAsync()
+                    .GetAwaiter()
+                    .GetResult();
+
+                var messageModel = JsonConvert.DeserializeObject<MessageModel>(result);
+
+                return messageModel.Messages[0];
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public static bool RegisterUser(RegisterUserModel model)
+        {
+            try
+            {
+                var stringContent = new StringContent(
+                    JsonConvert.SerializeObject(model),
+                    Encoding.UTF8,
+                    "application/json");
+
+                var response = HttpClient.PostAsync(WebApiUrls.RegisterUser, stringContent)
+                    .GetAwaiter()
+                    .GetResult();
+
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }

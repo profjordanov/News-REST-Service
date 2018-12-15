@@ -6,8 +6,25 @@
 
 <h2>All News:</h2>
 <hr />
-@foreach (var post in Model)
-{
-    <h3>@post.Title</h3>
-}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Published Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var post in Model)
+        {
+            <tr>
+                <th>@post.Id</th>
+                <td>@post.Title</td>
+                <td>@post.PublishDate</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
 

@@ -23,5 +23,23 @@ namespace News.Mvc.Client.Controllers
             var postNews = Service.PostNews(model);
             return RedirectToAction(postNews ? nameof(Index) : nameof(Create));
         }
+
+        [HttpGet]
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Delete(BaseModel model)
+        {
+            var deleteNews = Service.Delete(model);
+            return RedirectToAction(nameof(Result), new {message = deleteNews});
+        }
+
+        public IActionResult Result(string message)
+        {
+            return View("Result", message);
+        }
     }
 }
