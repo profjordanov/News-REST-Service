@@ -2,6 +2,11 @@
 
 REST service based on ASP.NET Core Web API, Entity Framework Core and SQL Server that holds news.
 
+## Client Applications:
+
+- [x] ASP.NET Core MVC
+- [x] Xamarin Android
+
 ## Endpoints:
 - [x] GET /api/news – returns all news ordered by publish date. 
 - [x] POST /api/news – creates a news item by given title, content and publish date. 
